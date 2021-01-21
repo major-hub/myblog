@@ -1,0 +1,8 @@
+<div class="sidebar-box ftco-animate">
+    <h3 class="sidebar-heading">Categories</h3>
+    <ul class="categories">
+        {% for cat in categories %}
+            <li><a href="{{ cat.get_absolute_url }}">{{ cat.title }} <span>({{ cat.cnt }})</span></a></li>
+        {% endfor %}
+    </ul>
+</div>

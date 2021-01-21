@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="colorlib-main">
+        <section class="ftco-section ftco-no-pt ftco-no-pb">
+            <div class="container">
+                <div class="row d-flex">
+                    <div class="col-xl-8 py-5 px-md-5">
+                        <div class="row pt-md-4">
+                            {% if messages %}
+                                {% for message in messages %}
+                                    {% if message.tags == 'error' %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% else %}
+                                        <div class="alert alert-{{ message.tags }}" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endif %}
+
+                                {% endfor %}
+                            {% endif %}
+                            {% block flex %}
+                                {% include 'inc/_homeflex.html' %}
+                            {% endblock %}
+                        </div>
+                        {% if page_obj.has_other_pages %}
+                            {% include 'inc/_paginator.html' %}
+                        {% endif %}
+                    </div>
+                    {% block right_sidebar %}
+                        {% include 'inc/_right_sidebar.html' %}
+                    {% endblock %}
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div id="colorlib-main">
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row px-md-4">
+                    {% for post in posts %}
+                        <div class="col-md-12">
+                        <div class="blog-entry ftco-animate d-md-flex">
+                            <a href="{{ post.get_absolute_url }}" class="img img-2"
+                               style="background-image: url({{ post.face_photo.url }});"></a>
+                            <div class="text text-2 pl-md-4">
+                                <h3 class="mb-2"><a href="{{ post.get_absolute_url }}">
+                                    {{ post.title }}</a></h3>
+                                <div class="meta-wrap">
+                                    <p class="meta">
+                                        <span><i class="icon-calendar mr-2"></i>{{ post.created_at|date:'b d, Y' }}</span>
+                                        <span><a href="{{ post.category.get_absolute_url }}"><i class="icon-folder-o mr-2"></i>{{ post.category.title }}</a></span>
+                                        <span><i class="icon-comment2 mr-2"></i>{{ post.cnt }} Comment</span>
+                                    </p>
+                                </div>
+                                <p class="mb-4">{{ post.face_content }}</p>
+                                <p><a href="{{ post.get_absolute_url }}" class="btn-custom">Read More <span class="ion-ios-arrow-forward"></span></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% include 'inc/_paginator.html' %}
+            </div>
+        </section>
+    </div>
+{% endblock %}

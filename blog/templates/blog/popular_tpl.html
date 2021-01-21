@@ -1,0 +1,16 @@
+<div class="sidebar-box ftco-animate">
+    <h3 class="sidebar-heading">Popular Articles</h3>
+    {% for post in popular_posts %}
+        <div class="block-21 mb-4 d-flex">
+        <a class="blog-img mr-4" style="background-image: url({{ post.face_photo.url }});"></a>
+        <div class="text">
+            <h3 class="heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+            <div class="meta">
+                <div><a href="{{ post.get_absolute_url }}"><span class="icon-calendar"></span> {{ post.created_at|date:'b d, Y' }}</a></div>
+                <div><a href="{{ post.author.get_absolute_url }}"><span class="icon-person"></span> {{ post.author }}</a></div>
+                <div><a href="{{ post.get_absolute_url|add:'#comment' }}"><span class="icon-chat"></span> {{ post.cnt }} Comment</a></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
