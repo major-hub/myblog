@@ -86,6 +86,7 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 #     }
 # }
 
+# Bu Heroku ning PostgreSQL dagi free database parametrlari
 DATABASES = {
     'default': {
         'ENGINE'   : 'django.db.backends.postgresql_psycopg2',
